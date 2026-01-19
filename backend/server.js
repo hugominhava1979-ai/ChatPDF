@@ -6,15 +6,9 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Rota principal para evitar "Cannot GET /"
-app.get("/", (req, res) => {
-  res.send("API do ChatPDF está a funcionar!");
-});
-
-// API KEY
+// SUA API KEY (SEGURA)
 const DEEPSEEK_KEY = process.env.DEEPSEEK_KEY;
 
-// Endpoint principal
 app.post("/perguntar", async (req, res) => {
   const { pergunta } = req.body;
 
@@ -38,6 +32,4 @@ app.post("/perguntar", async (req, res) => {
   res.json({ resposta: texto });
 });
 
-// Porta dinâmica para Render
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log("Backend ON na porta " + PORT));
+app.listen(3000, () => console.log("Backend ON em http://localhost:3000"));
